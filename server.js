@@ -12,12 +12,9 @@ const app = express();
 const PORT = 3000;
 
 // Middleware
-// Update CORS configuration
-app.use(cors({
-    origin: '*', // For development only. In production, specify your actual domain
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type']
-}));
+app.use(cors());
+app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Email Configuration
 const transporter = nodemailer.createTransport({
