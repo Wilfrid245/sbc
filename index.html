@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Form</title>
+</head>
+<body>
+    <h1>Order Form</h1>
+    <form id="orderForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br><br>
+
+        <label for="tel">Phone Number:</label>
+        <input type="tel" id="tel" name="tel" required>
+        <br><br>
+
+        <label for="email">Email (optional):</label>
+        <input type="email" id="email" name="email">
+        <br><br>
+
+        <label for="order">Order:</label>
+        <input type="text" id="order" value="Liquid Soap" readonly>
+        <br><br>
+
+        <label for="quantity">Quantity:</label><br>
+        <input type="radio" id="qty3" name="quantity" value="3L" required>
+        <label for="qty3">3L</label><br>
+        <input type="radio" id="qty5" name="quantity" value="5L">
+        <label for="qty5">5L</label><br>
+        <input type="radio" id="qty10" name="quantity" value="10L">
+        <label for="qty10">10L</label><br>
+        <input type="radio" id="qty20" name="quantity" value="20L">
+        <label for="qty20">20L</label><br><br>
+
+        <button type="button" id="submitOrder">Order</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
