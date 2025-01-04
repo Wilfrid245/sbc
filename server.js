@@ -12,7 +12,12 @@ const app = express();
 const PORT = 3000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: ['http://localhost:3000', 'http://127.0.0.1:3000', 'https://wilfrid245.github.io'],
+    methods: ['POST', 'GET', 'OPTIONS'],
+    allowedHeaders: ['Content-Type'],
+    credentials: true
+}));
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -23,6 +28,15 @@ const transporter = nodemailer.createTransport({
         user: process.env.EMAIL,
         pass: process.env.PASSWORD,
     },
+});
+
+// Verify email configuration
+transporter.verify(function(error, success) {
+    if (error) {
+        console.log('SMTP server connection error:', error);
+    } else {
+        console.log('SMTP server connection successful');
+    }
 });
 
 // Order Route
