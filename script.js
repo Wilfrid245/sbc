@@ -7,19 +7,24 @@ document.getElementById('submitOrder').addEventListener('click', async () => {
     const orderData = { name, tel, email, order: "Liquid Soap", quantity };
 
     try {
-        const response = await fetch('http://localhost:3000/orders', {
+        const response = await fetch('https://your-server-domain:3000/orders', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
             body: JSON.stringify(orderData),
         });
 
         if (response.ok) {
-            alert('Order submitted successfully!');
+            const result = await response.json();
+            alert(result.message || 'Order submitted successfully!');
         } else {
-            alert('Failed to submit order. Please try again.');
+            const error = await response.json();
+            alert(error.error || 'Failed to submit order. Please try again.');
         }
     } catch (error) {
         alert('Error: Unable to connect to the server.');
-        console.error(error);
+        console.error('Detailed error:', error);
     }
 });
